@@ -14,15 +14,43 @@ html {
   margin: 15px;
   /* display: flex; */
   /* flex-direction: column; */
+  font-family: 'Open Sans', sans-serif;
 }
 
 .post-title,
 .post-topic,
 .post-body,
-.liked {
+.liked-div {
   padding: 5px;
+}
+
+.post-title {
+  font-size: 1.25em;
+  text-decoration: underline;
+}
+
+.liked-div {
+  display: flex;
 }
 
 .post-topic {
   text-decoration: underline;
+}
+
+.unlike-button,
+.like-button  {
+  border: none;
+  background-color: transparent;
+}
+
+.like-button:hover {
+  background-color: rgb(0, 200, 0);
+  /* border: 1px solid black; */
+  border-radius: 5px;
+}
+
+.unlike-button:hover {
+  background-color: red;
+  /* border: 1px solid black; */
+  border-radius: 5px;
 }

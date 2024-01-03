@@ -17,7 +17,8 @@ export const PostFilterBar = ({ setSearchTerm, setFilteredTopic }) => {
 				className="topic-dropdown"
 				onChange={(event) => {
 					setFilteredTopic(event.target.value)
-				}}>
+				}}
+			>
 				<option value={0} className="topic-option" key={0}>
 					All Topics
 				</option>
@@ -26,7 +27,8 @@ export const PostFilterBar = ({ setSearchTerm, setFilteredTopic }) => {
 						<option
 							value={topicObj.id}
 							className="topic-option"
-							key={topicObj.id}>
+							key={topicObj.id}
+						>
 							{topicObj.name}
 						</option>
 					)

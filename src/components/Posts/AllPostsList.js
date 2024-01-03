@@ -20,8 +20,8 @@ export const AllPosts = () => {
 
 	// SEARCH POSTS
 	useEffect(() => {
-		const matchingPosts = allPosts.filter((post) =>
-			post.title.toLowerCase().includes(searchTerm.toLowerCase())
+		const matchingPosts = allPosts.filter(
+			(post) => post.title.toLowerCase().includes(searchTerm.toLowerCase())
 		)
 		setFilteredPosts(matchingPosts)
 	}, [allPosts, searchTerm])
@@ -34,7 +34,7 @@ export const AllPosts = () => {
 			)
 			setFilteredPosts(matchingPosts)
 		}
-	}, [allPosts, filteredTopic])
+	}, [filteredTopic, allPosts])
 
 	// SHOW ALL POSTS
 	useEffect(() => {
