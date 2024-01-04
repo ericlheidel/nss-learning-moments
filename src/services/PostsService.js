@@ -1,5 +1,5 @@
 export const getAllPosts = () => {
-	return fetch(`http://localhost:8002/posts?_expand=topic`).then(
+	return fetch(`http://localhost:8002/posts?_expand=topic&_embed=likes`).then(
 		(res) => res.json()
 	)
 }

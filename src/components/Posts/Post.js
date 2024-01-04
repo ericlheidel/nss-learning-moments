@@ -8,12 +8,14 @@ export const Post = ({ post }) => {
 			<div className="post-body">{post.body}</div>
 			<div className="liked-div">
 				<div className="like-buttons">
-						<button className="like-button"><i className="fa-solid fa-thumbs-up"></i></button>
-						<button className="unlike-button"><i className="fa-solid fa-thumbs-down"></i></button>
+					<button className="like-button">
+						<i className="fa-solid fa-thumbs-up"></i>
+					</button>
+					<button className="unlike-button">
+						<i className="fa-solid fa-thumbs-down"></i>
+					</button>
 				</div>
-				<div className="isLiked">
-					{post.isLiked ? "❤️" : ""}
-				</div>
+				<div className="likes">Likes: {post.likes.length}</div>
 			</div>
 		</div>
 	)
