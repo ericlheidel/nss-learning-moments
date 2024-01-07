@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getAllTopics } from "../../services/TopicsService.js"
+import { getAllTopics } from "../../services/topicsService.js"
 
 export const PostFilterBar = ({ setSearchTerm, setFilteredTopic }) => {
 	const [allTopics, setAllTopics] = useState([])

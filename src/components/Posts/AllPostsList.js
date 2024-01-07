@@ -1,21 +1,25 @@
 import { useEffect } from "react"
 import { useState } from "react"
-import { getAllPosts } from "../../services/PostsService.js"
+import { getAllPosts } from "../../services/postsService.js"
 import { Post } from "./Post.js"
 import { PostFilterBar } from "./PostFilterBar.js"
 
-export const AllPosts = () => {
+export const AllPosts = ({ currentUser }) => {
 	const [allPosts, setAllPosts] = useState([])
 	const [filteredPosts, setFilteredPosts] = useState([])
 	const [searchTerm, setSearchTerm] = useState("")
 	const [filteredTopic, setFilteredTopic] = useState("")
 
-	// INITIAL GET ALL POSTS
-	useEffect(() => {
+	const getAndSetAllPosts = () => {
 		getAllPosts().then((postsArray) => {
 			setAllPosts(postsArray)
-			// console.log("posts set!")
+			console.log("getAndSetAllPosts() successful")
 		})
+	}
+
+	// INITIAL GET ALL POSTS
+	useEffect(() => {
+		getAndSetAllPosts()
 	}, [])
 
 	// SEARCH POSTS
@@ -51,7 +55,14 @@ export const AllPosts = () => {
 			/>
 			<h2>Posts</h2>
 			{filteredPosts.map((postObj) => {
-				return <Post post={postObj} key={postObj.id} />
+				return (
+					<Post
+						post={postObj}
+						key={postObj.id}
+						currentUser={currentUser}
+						getAndSetAllPosts={getAndSetAllPosts}
+					/>
+				)
 			})}
 		</div>
 	)
