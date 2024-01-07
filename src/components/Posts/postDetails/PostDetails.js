@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import { Link, useParams } from "react-router-dom"
+import { /* Link, */ useParams } from "react-router-dom"
 import { getPostById } from "../../../services/postsService.js"
-import { PostForm } from "../forms/PostForm.js"
+// import { PostForm } from "../forms/PostForm.js"
 // import { postLike } from "../../../services/likeService.js"
 
 export const PostDetails = ({ currentUser }) => {
