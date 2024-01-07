@@ -15,6 +15,7 @@ export const Post = ({ post, currentUser, getAndSetAllPosts }) => {
 
 		getAndSetAllPosts()
 	}
+
 	return (
 		<div className="post">
 			<div className="post-topic">{post.topic.name}</div>
@@ -24,16 +25,12 @@ export const Post = ({ post, currentUser, getAndSetAllPosts }) => {
 			<div className="post-body">{post.body}</div>
 			<div className="liked-div">
 				<div className="like-buttons">
-					<button
-						className="like-button"
-						handleLike={handleLike}
-						onClick={handleLike}
-					>
+					<button className="like-button" onClick={handleLike}>
 						<i className="fa-solid fa-thumbs-up"></i>
 					</button>
-					<button className="unlike-button">
+					{/* <button className="unlike-button">
 						<i className="fa-solid fa-thumbs-down"></i>
-					</button>
+					</button> */}
 				</div>
 				<div className="likes">
 					Likes: {post.likes.length ? post.likes.length : "🤷‍♂️🤷‍♀️"}

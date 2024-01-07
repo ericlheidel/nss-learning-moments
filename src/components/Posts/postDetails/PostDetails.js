@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { getPostById } from "../../../services/postsService.js"
+import { PostForm } from "../forms/PostForm.js"
 // import { postLike } from "../../../services/likeService.js"
 
 export const PostDetails = ({ currentUser }) => {
@@ -51,9 +52,9 @@ export const PostDetails = ({ currentUser }) => {
 						<button className="like-button" /* onClick={handleLike} */>
 							<i className="fa-solid fa-thumbs-up"></i>
 						</button>
-						<button className="unlike-button">
+						{/* <button className="unlike-button">
 							<i className="fa-solid fa-thumbs-down"></i>
-						</button>
+						</button> */}
 						Author: {post.user?.name}
 					</>
 				)}
