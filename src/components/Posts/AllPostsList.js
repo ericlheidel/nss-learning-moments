@@ -13,7 +13,6 @@ export const AllPosts = ({ currentUser }) => {
 	const getAndSetAllPosts = () => {
 		getAllPosts().then((postsArray) => {
 			setAllPosts(postsArray)
-			console.log("getAndSetAllPosts() successful")
 		})
 	}
 
