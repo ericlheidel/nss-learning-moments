@@ -14,7 +14,8 @@ fieldset {
 	border: 0;
 }
 
-.edit-dropdown {
+.edit-dropdown,
+.new-dropdown {
 	width: 15em;
 }
 

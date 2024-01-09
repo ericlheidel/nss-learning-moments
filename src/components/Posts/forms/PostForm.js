@@ -6,12 +6,10 @@ import "./PostForm.css"
 
 export const PostForm = ({ currentUser }) => {
 	const [post, setPost] = useState([])
+	const [allTopics, setAllTopics] = useState([])
+	const [editedTopic, setEditedTopic] = useState(0)
 
 	const { postId } = useParams()
-
-	const [allTopics, setAllTopics] = useState([])
-
-	const [editedTopic, setEditedTopic] = useState(0)
 
 	const navigate = useNavigate()
 
@@ -28,6 +26,10 @@ export const PostForm = ({ currentUser }) => {
 		})
 	}, [])
 
+	useEffect(() => {
+		setEditedTopic(post.topicId)
+	}, [post])
+
 	const handleEdit = (event) => {
 		event.preventDefault()
 
@@ -40,7 +42,6 @@ export const PostForm = ({ currentUser }) => {
 			date: post.date,
 		}
 
-		console.log(editedPost)
 		updatePost(editedPost).then(() => {
 			navigate(`/posts/${post.id}`)
 		})
@@ -59,6 +60,7 @@ export const PostForm = ({ currentUser }) => {
 					<label>Topic: </label>
 					<select
 						className="form-group edit-dropdown"
+						value={editedTopic}
 						onChange={(event) => {
 							setEditedTopic(event.target.value)
 						}}
@@ -99,15 +101,16 @@ export const PostForm = ({ currentUser }) => {
 						onChange={handleInputChange}
 						required
 						className="form-group edit-body"
-					></input>
+					/>
 				</div>
+			</fieldset>
+			<fieldset>
 				<div>
 					<button
 						className="btn-primary form-btn form-control"
 						onClick={handleEdit}
 					>
 						Edit Post
-						{/* <Link to="/posts">Edit Post</Link> */}
 					</button>
 				</div>
 			</fieldset>
