@@ -10,13 +10,16 @@ export const MyPosts = ({ currentUser }) => {
 	const [userPosts, setUserPosts] = useState([])
 
 	const getMyPosts = () => {
-		getPostByUserId(currentUser.id).then((userPostsArray) => {
-			setUserPosts(userPostsArray)
-		})
+		if (currentUser) {
+			getPostByUserId(currentUser.id).then((userPostsArray) => {
+				setUserPosts(userPostsArray)
+			})
+		}
 	}
 
 	useEffect(() => {
 		getMyPosts()
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [currentUser])
 
 	// useEffect(() => {
