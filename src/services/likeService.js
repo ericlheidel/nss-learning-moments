@@ -7,3 +7,15 @@ export const postLike = (like) => {
 		body: JSON.stringify(like),
 	})
 }
+
+export const getLikedPostsByUser = (userId) => {
+	return fetch(
+		`http://localhost:8002/likes?userId=${userId}&_expand=user&_expand=post`
+	).then((res) => res.json())
+}
+
+export const removeLikeByPostId = (likeId) => {
+	return fetch(`http://localhost:8002/likes/${likeId}`, {
+		method: "DELETE",
+	})
+}

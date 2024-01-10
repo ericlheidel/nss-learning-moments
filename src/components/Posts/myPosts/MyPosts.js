@@ -22,12 +22,6 @@ export const MyPosts = ({ currentUser }) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [currentUser])
 
-	// useEffect(() => {
-	// 	getPostByUserId(currentUser.id).then((userPostsArray) => {
-	// 		setUserPosts(userPostsArray)
-	// 	})
-	// }, [currentUser])
-
 	const handleDelete = (idToDelete) => {
 		deletePostById(idToDelete).then(() => {
 			getMyPosts()

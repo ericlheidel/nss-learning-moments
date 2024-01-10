@@ -45,7 +45,7 @@ export const ApplicationViews = () => {
 					path="myposts"
 					element={<MyPosts currentUser={currentUser} />}
 				></Route>
-				<Route path="favs" element={<Favs />}></Route>
+				<Route path="favs" element={<Favs currentUser={currentUser} />}></Route>
 				<Route
 					path="newpost"
 					element={<NewPost currentUser={currentUser} />}

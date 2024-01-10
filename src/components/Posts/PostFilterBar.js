@@ -7,7 +7,6 @@ export const PostFilterBar = ({ setSearchTerm, setFilteredTopic }) => {
 	useEffect(() => {
 		getAllTopics().then((topicsArray) => {
 			setAllTopics(topicsArray)
-			// console.log("topics are set!")
 		})
 	}, [])
 

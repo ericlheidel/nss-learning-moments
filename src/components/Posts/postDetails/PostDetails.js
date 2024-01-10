@@ -8,8 +8,6 @@ export const PostDetails = ({ currentUser }) => {
 	const [post, setPost] = useState({})
 	const { postId } = useParams()
 
-	console.log(postId)
-
 	// THIS RENDERS WHEN POSTDETAILS.js INITIALLY LOADS
 	useEffect(() => {
 		getPostById(postId).then((data) => {

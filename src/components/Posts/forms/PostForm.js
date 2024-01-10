@@ -110,7 +110,7 @@ export const PostForm = ({ currentUser }) => {
 						className="btn-primary form-btn form-control"
 						onClick={handleEdit}
 					>
-						Edit Post
+						Save
 					</button>
 				</div>
 			</fieldset>
