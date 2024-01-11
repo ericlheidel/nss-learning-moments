@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { getPostById } from "../../../services/postsService.js"
-import { getLikes, postLike } from "../../../services/likeService.js"
+import { /* getLikes, */ postLike } from "../../../services/likeService.js"
 import "./../Post.css"
 
 export const PostDetails = ({ currentUser }) => {
 	const [post, setPost] = useState({})
-	const [likes, setLikes] = useState([])
-	const [likedPosts, setLikedPosts] = useState([])
+	// TODO const [likes, setLikes] = useState([])
+	// TODO const [likedPosts, setLikedPosts] = useState([])
 
 	const { postId } = useParams()
 
@@ -19,11 +19,11 @@ export const PostDetails = ({ currentUser }) => {
 		})
 	}, [postId])
 
-	useEffect(() => {
-		getLikes().then((likesArray) => {
-			setLikes(likesArray)
-		})
-	}, [])
+	//TODO useEffect(() => {
+	//TODO getLikes().then((likesArray) => {
+	//TODO 		setLikes(likesArray)
+	//TODO 	})
+	//TODO }, [])
 
 	useEffect(() => {}, [])
 
