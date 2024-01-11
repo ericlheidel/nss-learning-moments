@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { getPostById } from "../../../services/postsService.js"
-import { postLike } from "../../../services/likeService.js"
+import { getLikes, postLike } from "../../../services/likeService.js"
 import "./../Post.css"
 
 export const PostDetails = ({ currentUser }) => {
 	const [post, setPost] = useState({})
+	const [likes, setLikes] = useState([])
+	const [likedPosts, setLikedPosts] = useState([])
+
 	const { postId } = useParams()
 
 	// THIS RENDERS WHEN POSTDETAILS.js INITIALLY LOADS
@@ -15,6 +18,14 @@ export const PostDetails = ({ currentUser }) => {
 			setPost(postObj)
 		})
 	}, [postId])
+
+	useEffect(() => {
+		getLikes().then((likesArray) => {
+			setLikes(likesArray)
+		})
+	}, [])
+
+	useEffect(() => {}, [])
 
 	const handleLike = () => {
 		const newLike = {

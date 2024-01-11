@@ -8,6 +8,10 @@ export const postLike = (like) => {
 	})
 }
 
+export const getLikes = () => {
+	return fetch(`http://localhost:8002/likes`).then((res) => res.json())
+}
+
 export const getLikedPostsByUser = (userId) => {
 	return fetch(
 		`http://localhost:8002/likes?userId=${userId}&_expand=user&_expand=post`
