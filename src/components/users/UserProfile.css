@@ -1,0 +1,21 @@
+.profile {
+	margin: 3rem 5rem;
+	border: 1px solid var(--outline);
+	border-radius: 10px;
+	padding: 1rem 0rem 0rem 1rem;
+	box-shadow: 1px 2px 5px lightgray;
+	background-color: var(--offWhite);
+}
+
+.profile-group {
+	min-width: 0;
+	padding-bottom: 1.5rem;
+	margin: 0;
+	border: 0;
+}
+
+.user-info {
+	margin-right: 1rem;
+	display: flex;
+	flex-direction: column;
+}

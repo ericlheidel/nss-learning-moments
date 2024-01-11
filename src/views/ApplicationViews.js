@@ -7,6 +7,8 @@ import { Favs } from "../components/posts/favs/Favs.js"
 import { NewPost } from "../components/posts/newPost/NewPost.js"
 import { MyPosts } from "../components/posts/myPosts/MyPosts.js"
 import { PostForm } from "../components/posts/forms/PostForm.js"
+import { UserProfile } from "../components/users/UserProfile.js"
+import { EditProfileForm } from "../components/posts/forms/EditProfileForm.js"
 
 export const ApplicationViews = () => {
 	const [currentUser, setCurrentUser] = useState([])
@@ -24,7 +26,7 @@ export const ApplicationViews = () => {
 				path="/"
 				element={
 					<>
-						<NavBar />
+						<NavBar currentUser={currentUser} />
 						<Outlet />
 					</>
 				}
@@ -50,6 +52,14 @@ export const ApplicationViews = () => {
 					path="newpost"
 					element={<NewPost currentUser={currentUser} />}
 				></Route>
+				<Route
+					path="profile/:userId"
+					element={<UserProfile currentUser={currentUser} />}
+				/>
+				<Route
+					path="profile/edit/:userId"
+					element={<EditProfileForm currentUser={currentUser} />}
+				/>
 			</Route>
 		</Routes>
 	)

@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react"
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import { getPostById } from "../../../services/postsService.js"
-import { /* getLikes, */ postLike } from "../../../services/likeService.js"
+import { postLike } from "../../../services/likeService.js"
 import "./../Post.css"
 
 export const PostDetails = ({ currentUser }) => {
 	const [post, setPost] = useState({})
-	// TODO const [likes, setLikes] = useState([])
-	// TODO const [likedPosts, setLikedPosts] = useState([])
 
 	const { postId } = useParams()
+
+	const navigate = useNavigate()
 
 	// THIS RENDERS WHEN POSTDETAILS.js INITIALLY LOADS
 	useEffect(() => {
@@ -19,13 +19,14 @@ export const PostDetails = ({ currentUser }) => {
 		})
 	}, [postId])
 
-	//TODO useEffect(() => {
-	//TODO getLikes().then((likesArray) => {
-	//TODO 		setLikes(likesArray)
-	//TODO 	})
-	//TODO }, [])
-
-	useEffect(() => {}, [])
+	const addLike = () => {
+		const foundLike = post.likes.filter(
+			(like) => like.userId === currentUser.id
+		)
+		if (foundLike.length === 0) {
+			handleLike()
+		}
+	}
 
 	const handleLike = () => {
 		const newLike = {
@@ -38,6 +39,7 @@ export const PostDetails = ({ currentUser }) => {
 				const updatedPostObj = data[0]
 				setPost(updatedPostObj)
 			})
+			navigate("/favs")
 		})
 	}
 
@@ -64,10 +66,13 @@ export const PostDetails = ({ currentUser }) => {
 					</button>
 				) : (
 					<>
-						<button className="like-button" onClick={handleLike}>
+						<button className="like-button" onClick={addLike}>
 							<i className="fa-solid fa-thumbs-up"></i>
 						</button>
-						Author: {post.user?.name}
+						Author:{" "}
+						<Link className="link-author" to={`/profile/${post.userId}`}>
+							{post.user?.name}
+						</Link>
 					</>
 				)}
 				<div>Date Posted: {post.date}</div>

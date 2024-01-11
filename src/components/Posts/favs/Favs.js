@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react"
 import {
 	getLikedPostsByUser,
-	removeLikeByPostId,
+	removeLikeById,
 } from "../../../services/likeService.js"
 
 export const Favs = ({ currentUser }) => {
 	const [likedPosts, setLikedPosts] = useState([])
-	const [matchingPosts, setMatchingPosts] = useState([])
 
 	const getLikedPosts = () => {
 		if (currentUser) {
-			console.log(currentUser.id) //!!! ***DELETE ME*** !!!
+			// console.log(currentUser.id) //!!! ***DELETE ME*** !!!
 			getLikedPostsByUser(currentUser.id).then((likedPostsArray) => {
 				setLikedPosts(likedPostsArray)
-				console.log(likedPostsArray) //!!! ***DELETE ME*** !!!
+				// console.log(likedPostsArray) //!!! ***DELETE ME*** !!!
 			})
 		}
 	}
@@ -23,31 +22,23 @@ export const Favs = ({ currentUser }) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [currentUser])
 
-	useEffect(() => {
-		const matchingPostsArray = likedPosts.filter(
-			(likedPost) => likedPost.userId === currentUser.id
-		)
-		setMatchingPosts(matchingPostsArray)
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [currentUser])
-
 	const handleRemove = (idToDelete) => {
-		removeLikeByPostId(idToDelete).then(() => {
+		removeLikeById(idToDelete).then(() => {
 			getLikedPosts()
 		})
 	}
 
 	return (
 		<div>
-			{matchingPosts.map((matchingPostObj) => {
+			{likedPosts.map((likedPostObj) => {
 				return (
 					<>
-						<div className="post" key={matchingPostObj.id}>
-							<div className="post-title">{matchingPostObj.post.title}</div>
+						<div className="post">
+							<div className="post-title">{likedPostObj.post.title}</div>
 							<button
 								className="delete-btn btn-secondary"
-								value={matchingPostObj.id}
-								key={matchingPostObj.id}
+								value={likedPostObj.id}
+								key={likedPostObj.id}
 								onClick={(event) => {
 									handleRemove(event.target.value)
 								}}

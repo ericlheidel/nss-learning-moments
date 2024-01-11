@@ -40,7 +40,8 @@
 	font-size: 1.25em;
 }
 
-.post-title:hover {
+.post-title:hover,
+.link-author:hover {
 	color: var(--primary);
 }
 

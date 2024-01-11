@@ -20,9 +20,11 @@ export const NewPost = ({ currentUser }) => {
 
 	useEffect(() => {
 		setNewTopic(newTopic)
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	const today = new Date()
+
 	const handleNewPost = (event) => {
 		event.preventDefault()
 
